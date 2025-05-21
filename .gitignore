@@ -23,3 +23,10 @@ go.work.sum
 
 # env file
 .env
+
+# macos
+.DS_Store
+
+# ide
+.vscode
+.idea

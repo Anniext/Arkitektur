@@ -36,6 +36,14 @@ func InitSystemConfig(name, mode, path string) error {
 	return nil
 }
 
+func GetDriverDns() string {
+	info := GetMysqlInfo()
+	if info.Enable {
+		return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&interpolateParams=true", info.User, info.Password, info.Host, info.Port, info.DB)
+	}
+	return ""
+}
+
 // GetServerConfig 获取配置文件
 func GetServerConfig() *ServerConfig {
 	return serverConfig
