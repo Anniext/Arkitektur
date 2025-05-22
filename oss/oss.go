@@ -1,4 +1,4 @@
-package minio
+package oss
 
 type OSSConfig struct {
 	Endpoint        string
@@ -56,6 +56,6 @@ func NewOSSOption(options ...Option) {
 
 var defaultOSSConfig *OSSConfig
 
-func GetDefaultOSS() *OSSConfig {
+func GetDefaultOSSConfig() *OSSConfig {
 	return defaultOSSConfig
 }

@@ -11,12 +11,12 @@ import (
 var defaultRedis *redis.Client
 
 func InitDefaultRedis() error {
-	cacheConfig := GetDefaultCache()
+	cnf := GetDefaultCacheConfig()
 	defaultRedis = redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%d", cacheConfig.Host, cacheConfig.Port),
-		Password: defaultCache.Password,
-		DB:       defaultCache.DB,
-		PoolSize: defaultCache.PoolSize,
+		Addr:     fmt.Sprintf("%s:%d", cnf.Host, cnf.Port),
+		Password: cnf.Password,
+		DB:       cnf.DB,
+		PoolSize: cnf.PoolSize,
 	})
 
 	// 测试连接

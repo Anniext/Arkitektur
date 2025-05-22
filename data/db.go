@@ -1,11 +1,12 @@
 package data
 
 import (
+	"sync"
+	"time"
+
 	"github.com/Anniext/Arkitektur/system/log"
 	"github.com/Anniext/Verktyg/persist/core"
 	_ "github.com/go-sql-driver/mysql"
-	"sync"
-	"time"
 	"xorm.io/xorm"
 )
 
@@ -20,10 +21,13 @@ var gEngine *xorm.Engine
 var engineOnce sync.Once
 
 func GetDB() *xorm.Engine {
+	dbCnf := GetDefaultDBConfig()
+	if dbCnf == nil {
+		return nil
+	}
+
 	engineOnce.Do(func() {
 		var err error
-		dbCnf := GetDefaultDB()
-
 		gEngine, err = xorm.NewEngine(dbCnf.Driver, dbCnf.Dns)
 		if err != nil {
 			gEngine = nil

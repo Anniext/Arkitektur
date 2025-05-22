@@ -8,10 +8,17 @@ type ServerConfig struct {
 	MysqlInfo     MysqlInfo     `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	RedisInfo     RedisInfo     `mapstructure:"redis" json:"redis" yaml:"redis"`
 	NacosInfo     NacosInfo     `mapstructure:"nacos" json:"nacos" yaml:"nacos"`
-	MinioInfo     MinioConfig   `mapstructure:"minio" json:"minio" yaml:"minio"`
+	MinioInfo     MinioConfig   `mapstructure:"oss" json:"oss" yaml:"oss"`
 	Casbin        CasbinInfo    `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
 	MqttInfo      MqttConfig    `mapstructure:"mqtt" json:"mqtt" yaml:"mqtt"`
 	WebsocketInfo WebsocketInfo `mapstructure:"websocket" json:"websocket" yaml:"websocket"`
+	TweetInfo     TweetInfo     `mapstructure:"tweet" json:"tweet" yaml:"tweet"`
+}
+
+type TweetInfo struct {
+	ApiUrl string `mapstructure:"api_url" json:"api_url" yaml:"api_url"`
+	Key    string `mapstructure:"api_key" json:"api_key" yaml:"api_key"`
+	Host   string `mapstructure:"api_host" json:"api_host" yaml:"api_host"`
 }
 
 // MysqlInfo mysql配置文件
@@ -52,6 +59,7 @@ type MinioConfig struct {
 	SecretAccessKey string `mapstructure:"secret-access-key" json:"secret-access-key" yaml:"secret-access-key"`
 	BucketName      string `mapstructure:"bucket-name" json:"bucket-name" yaml:"bucket-name"`
 	UseSSL          bool   `mapstructure:"use-ssl" json:"use-ssl" yaml:"use-ssl"`
+	Token           string `mapstructure:"token" json:"token" yaml:"token"`
 }
 
 type CasbinInfo struct {

@@ -26,14 +26,14 @@ func WithModeOption(mode string) Option {
 }
 
 func NewDBOption(options ...Option) {
-	defaultDB = &DBConfig{}
+	defaultDBConfig = &DBConfig{}
 	for _, option := range options {
-		option(defaultDB)
+		option(defaultDBConfig)
 	}
 }
 
-var defaultDB *DBConfig
+var defaultDBConfig *DBConfig
 
-func GetDefaultDB() *DBConfig {
-	return defaultDB
+func GetDefaultDBConfig() *DBConfig {
+	return defaultDBConfig
 }

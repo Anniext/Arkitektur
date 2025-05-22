@@ -1,22 +1,74 @@
 package mqtt
 
-import (
-	"crypto/tls"
-	"time"
-)
+type MqttConfig struct {
+	BrokerURL            string
+	ClientID             string
+	KeepAlive            int
+	QoS                  byte
+	Retain               bool
+	AutoReconnect        bool
+	ConnectTimeout       int
+	MaxReconnectInterval int
+	ServerID             string
+}
+type Option func(*MqttConfig)
 
-type ClientConfig struct {
-	BrokerURL            string        // mqtt服务器
-	ClientID             string        // 客户端id
-	KeepAlive            time.Duration // 心跳包
-	QoS                  byte          // 消息质量
-	Retain               bool          // 保留消息标志
-	AutoReconnect        bool          // 是否自重连
-	ConnectTimeout       time.Duration // 连接超时时间
-	MaxReconnectInterval time.Duration // 最大重连间隔
-	WillTopic            string        // 遗嘱消息主题
-	WillPayload          []byte        // 遗嘱消息内容
-	WillQoS              byte          // 遗嘱消息质量
-	WillRetain           bool          // 遗嘱保留标志
-	TLSConfig            *tls.Config   // TLS配置
+func WithBrokerURLOption(brokerURL string) Option {
+	return func(c *MqttConfig) {
+		c.BrokerURL = brokerURL
+	}
+}
+func WithClientIDOption(clientID string) Option {
+	return func(c *MqttConfig) {
+		c.ClientID = clientID
+	}
+}
+func WithKeepAliveOption(keepAlive int) Option {
+	return func(c *MqttConfig) {
+		c.KeepAlive = keepAlive
+	}
+}
+func WithQoSOption(qoS byte) Option {
+	return func(c *MqttConfig) {
+		c.QoS = qoS
+	}
+}
+func WithRetainOption(retain bool) Option {
+	return func(c *MqttConfig) {
+		c.Retain = retain
+	}
+}
+func WithAutoReconnectOption(autoReconnect bool) Option {
+	return func(c *MqttConfig) {
+		c.AutoReconnect = autoReconnect
+	}
+}
+func WithConnectTimeoutOption(connectTimeout int) Option {
+	return func(c *MqttConfig) {
+		c.ConnectTimeout = connectTimeout
+	}
+}
+func WithMaxReconnectIntervalOption(maxReconnectInterval int) Option {
+	return func(c *MqttConfig) {
+		c.MaxReconnectInterval = maxReconnectInterval
+	}
+}
+
+func WithServerIDOption(serverID string) Option {
+	return func(c *MqttConfig) {
+		c.ServerID = serverID
+	}
+}
+
+func NewMqttOption(options ...Option) {
+	defaultMqttConfig = &MqttConfig{}
+	for _, option := range options {
+		option(defaultMqttConfig)
+	}
+}
+
+var defaultMqttConfig *MqttConfig
+
+func GetDefaultMqttConfig() *MqttConfig {
+	return defaultMqttConfig
 }

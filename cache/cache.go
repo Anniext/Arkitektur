@@ -40,14 +40,14 @@ func WithPoolSizeOption(pollSize int) Option {
 }
 
 func NewCacheOption(options ...Option) {
-	defaultCache = &CacheConfig{}
+	defaultCacheConfig = &CacheConfig{}
 	for _, option := range options {
-		option(defaultCache)
+		option(defaultCacheConfig)
 	}
 }
 
-var defaultCache *CacheConfig
+var defaultCacheConfig *CacheConfig
 
-func GetDefaultCache() *CacheConfig {
-	return defaultCache
+func GetDefaultCacheConfig() *CacheConfig {
+	return defaultCacheConfig
 }

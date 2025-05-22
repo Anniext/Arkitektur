@@ -2,9 +2,10 @@ package config
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
 	"os"
 	"path/filepath"
+
+	"github.com/spf13/viper"
 )
 
 var (
@@ -82,4 +83,9 @@ func GetMqttInfo() MqttConfig {
 // GetWebsocketInfo 获取websocket配置文件
 func GetWebsocketInfo() WebsocketInfo {
 	return serverConfig.WebsocketInfo
+}
+
+// GetTweetInfo 获取tweet配置文件
+func GetTweetInfo() TweetInfo {
+	return serverConfig.TweetInfo
 }

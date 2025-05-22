@@ -1,4 +1,4 @@
-package minio
+package oss
 
 import (
 	"context"
@@ -8,14 +8,17 @@ import (
 
 var defaultOSS *minio.Client
 
-func InitOSS() {
-	ossCnf := GetDefaultOSS()
+func InitDefaultOSS() error {
+	ossCnf := GetDefaultOSSConfig()
+	if ossCnf == nil {
+		return nil
+	}
 	minioClient, err := minio.New(ossCnf.Endpoint, &minio.Options{
 		Creds:  credentials.NewStaticV4(ossCnf.AccessKeyID, ossCnf.SecretAccessKey, ossCnf.Token),
 		Secure: ossCnf.UseSSL,
 	})
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	ctx := context.Background()
@@ -23,13 +26,13 @@ func InitOSS() {
 	// 检查默认桶是否存在，不存在则创建
 	exists, err := minioClient.BucketExists(ctx, ossCnf.BucketName)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	if !exists {
 		err = minioClient.MakeBucket(ctx, ossCnf.BucketName, minio.MakeBucketOptions{})
 		if err != nil {
-			panic(err)
+			return err
 		}
 
 		// 设置桶的访问策略为公开读
@@ -46,12 +49,14 @@ func InitOSS() {
 		}`
 		err = minioClient.SetBucketPolicy(ctx, ossCnf.BucketName, policy)
 		if err != nil {
-			panic(err)
+			return err
 		}
 	}
 
 	defaultOSS = minioClient
+
+	return nil
 }
-func GetDefaultRedis() *minio.Client {
+func GetDefaultOSS() *minio.Client {
 	return defaultOSS
 }
