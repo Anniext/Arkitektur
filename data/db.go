@@ -9,7 +9,7 @@ import (
 	"xorm.io/xorm"
 )
 
-// TODO : DB init 暂时只支持mysql
+// TODO : DB initialization 暂时只支持mysql
 
 /*
  * 数据库
