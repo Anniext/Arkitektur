@@ -6,10 +6,11 @@ import (
 )
 
 type HttpRequest struct {
-	url    string
-	method string
-	header map[string]string
-	body   io.Reader
+	url       string
+	memoryUrl string
+	method    string
+	header    map[string]string
+	body      io.Reader
 }
 
 func NewHttpRequest() *HttpRequest {
@@ -38,6 +39,11 @@ func (h *HttpRequest) PushUrl(url string) *HttpRequest {
 
 func (h *HttpRequest) PushBody(body io.Reader) *HttpRequest {
 	h.body = body
+	return h
+}
+
+func (h *HttpRequest) PushMemoryUrl(memoryUrl string) *HttpRequest {
+	h.memoryUrl = memoryUrl
 	return h
 }
 

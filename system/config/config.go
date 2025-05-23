@@ -16,9 +16,10 @@ type ServerConfig struct {
 }
 
 type TweetInfo struct {
-	ApiUrl string `mapstructure:"api_url" json:"api_url" yaml:"api_url"`
-	Key    string `mapstructure:"api_key" json:"api_key" yaml:"api_key"`
-	Host   string `mapstructure:"api_host" json:"api_host" yaml:"api_host"`
+	MemoryUrl string `mapstructure:"memory_url" json:"memory_url" yaml:"memory_url"`
+	ApiUrl    string `mapstructure:"api_url" json:"api_url" yaml:"api_url"`
+	Key       string `mapstructure:"api_key" json:"api_key" yaml:"api_key"`
+	Host      string `mapstructure:"api_host" json:"api_host" yaml:"api_host"`
 }
 
 // MysqlInfo mysql配置文件
