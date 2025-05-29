@@ -89,3 +89,8 @@ func GetWebsocketInfo() WebsocketInfo {
 func GetTweetInfo() TweetInfo {
 	return serverConfig.TweetInfo
 }
+
+// GetBinanceInfo 获取binance配置文件
+func GetBinanceInfo() BinanceInfo {
+	return serverConfig.BinanceInfo
+}

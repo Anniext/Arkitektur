@@ -13,6 +13,7 @@ type ServerConfig struct {
 	MqttInfo      MqttConfig    `mapstructure:"mqtt" json:"mqtt" yaml:"mqtt"`
 	WebsocketInfo WebsocketInfo `mapstructure:"websocket" json:"websocket" yaml:"websocket"`
 	TweetInfo     TweetInfo     `mapstructure:"tweet" json:"tweet" yaml:"tweet"`
+	BinanceInfo   BinanceInfo   `mapstructure:"binance" json:"binance" yaml:"binance"`
 }
 
 type TweetInfo struct {
@@ -83,4 +84,8 @@ type WebsocketInfo struct {
 	Enable      bool `mapstructure:"enable" json:"enable" yaml:"enable"`
 	Port        int  `mapstructure:"port" json:"port" yaml:"port"`
 	TimeoutRead int  `mapstructure:"timeout_read" json:"timeout_read" yaml:"timeout_read"`
+}
+type BinanceInfo struct {
+	ApiKey    int `mapstructure:"apiKey" json:"apiKey" yaml:"apiKey"`
+	SecretKey int `mapstructure:"secretKey" json:"secretKey" yaml:"secretKey"`
 }
