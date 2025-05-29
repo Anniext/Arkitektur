@@ -86,6 +86,7 @@ type WebsocketInfo struct {
 	TimeoutRead int  `mapstructure:"timeout_read" json:"timeout_read" yaml:"timeout_read"`
 }
 type BinanceInfo struct {
+	Proxy     string `mapstructure:"proxy" json:"proxy" yaml:"proxy"`
 	ApiKey    string `mapstructure:"apiKey" json:"apiKey" yaml:"apiKey"`
 	SecretKey string `mapstructure:"secretKey" json:"secretKey" yaml:"secretKey"`
 }
