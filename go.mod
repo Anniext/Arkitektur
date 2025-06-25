@@ -4,6 +4,7 @@ go 1.24.2
 
 require (
 	github.com/Anniext/Verktyg v0.0.0-20250521100015-46992154c75a
+	github.com/adshao/go-binance/v2 v2.8.2
 	github.com/casbin/casbin/v2 v2.105.0
 	github.com/casbin/xorm-adapter/v3 v3.4.0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
@@ -25,7 +26,6 @@ require (
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
-	github.com/adshao/go-binance/v2 v2.8.2 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.18 // indirect
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/bmatcuk/doublestar/v4 v4.6.1 // indirect
