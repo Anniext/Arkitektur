@@ -94,3 +94,8 @@ func GetTweetInfo() TweetInfo {
 func GetBinanceInfo() BinanceInfo {
 	return serverConfig.BinanceInfo
 }
+
+// GetBarkInfo 获取bark配置
+func GetBarkInfo() BarkInfo {
+	return serverConfig.BarkInfo
+}

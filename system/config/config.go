@@ -3,7 +3,6 @@ package config
 type ServerConfig struct {
 	Name          string        `mapstructure:"name" json:"name" yaml:"name"`
 	JwtSigningKey string        `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	BarkUrl       string        `mapstructure:"bark" json:"bark" yaml:"bark"`
 	ZoneId        int32         `mapstructure:"zone_id" json:"zone_id" yaml:"zone_id"`
 	MysqlInfo     MysqlInfo     `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	RedisInfo     RedisInfo     `mapstructure:"redis" json:"redis" yaml:"redis"`
@@ -14,6 +13,7 @@ type ServerConfig struct {
 	WebsocketInfo WebsocketInfo `mapstructure:"websocket" json:"websocket" yaml:"websocket"`
 	TweetInfo     TweetInfo     `mapstructure:"tweet" json:"tweet" yaml:"tweet"`
 	BinanceInfo   BinanceInfo   `mapstructure:"binance" json:"binance" yaml:"binance"`
+	BarkInfo      BarkInfo      `mapstructure:"bark" json:"bark" yaml:"bark"`
 }
 
 type TweetInfo struct {
@@ -89,4 +89,14 @@ type BinanceInfo struct {
 	Proxy     string `mapstructure:"proxy" json:"proxy" yaml:"proxy"`
 	ApiKey    string `mapstructure:"apiKey" json:"apiKey" yaml:"apiKey"`
 	SecretKey string `mapstructure:"secretKey" json:"secretKey" yaml:"secretKey"`
+}
+
+type BarkInfo struct {
+	Enable   bool   `mapstructure:"enable" json:"enable" yaml:"enable"`
+	Token    string `mapstructure:"token" json:"token" yaml:"token"`
+	Host     string `mapstructure:"host" json:"host" yaml:"host"`
+	Group    string `mapstructure:"group" json:"group" yaml:"group"`
+	AutoCopy bool   `mapstructure:"autoCopy" json:"autoCopy" yaml:"autoCopy"`
+	Sound    string `mapstructure:"sound" json:"sound" yaml:"sound"`
+	Icon     string `mapstructure:"icon" json:"icon" yaml:"icon"`
 }
