@@ -3,8 +3,8 @@ package jwt
 import (
 	"context"
 	"errors"
-	"github.com/Anniext/Arkitektur/code"
 	"github.com/Anniext/Arkitektur/utils"
+	"pumppill/code"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
